@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  resources :users, only: [:new, :create]
+  
+   root 'products#index'
+
+   get 'login', to: 'sessions#new'
+   post 'login', to: 'sessions#create'
+   delete 'logout', to: 'sessions#destroy'
+   
+   resources :users, only: [:new, :create]
+   resources :products
 
    # get 'products', to: 'products#index'
    # get 'products/new', to: 'products#new', as: 'new_product'
@@ -9,7 +17,5 @@ Rails.application.routes.draw do
    # patch 'products/:id', to: 'products#update'
    # delete 'products/:id', to: 'products#destroy'
 
-   resources :products
 
-   root 'products#index'
 end
